@@ -1,4 +1,4 @@
-<nz-layout class="app-layout">
+<nz-layout class="app-layout" *ngIf="tss.getToken(); else forLogin">
   <nz-sider class="menu-sidebar"
             nzCollapsible
             nzWidth="256px"
@@ -6,27 +6,34 @@
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
+      <a href="/">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
         <h1>Šnjofko</h1>
       </a>
     </div>
+
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+
+      <li nzMatchRouterExact nz-menu-item nzSelected nzMatchRouter nzTitle="Home" nzTooltipPlacement="right">
+        <i nz-icon nzType="home"></i>
+        <span><a routerLink="/">Home</a></span>
+      </li>
+
       <li nz-submenu nzOpen nzTitle="Oglasi" nzIcon="dashboard">
         <ul>
-          <li nzSelected nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter nzMatchRouterExact>
             <a routerLink="/items/highlighted">Istaknuto</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter nzMatchRouterExact>
             <a routerLink="/items/cars">Auti</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter nzMatchRouterExact>
             <a routerLink="/items/books">Knjige</a>
           </li>
         </ul>
       </li>
 
-      <li nz-menu-item nzMatchRouter nzTitle="Profil" nzIcon="dashboard" nzTooltipPlacement="right">
+      <li nz-menu-item nzMatchRouter nzTitle="Profil" nzTooltipPlacement="right">
         <i nz-icon nzType="user"></i>
         <span><a routerLink="/profile">Profil</a></span>
       </li>
@@ -51,3 +58,11 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
+
+<ng-template #forLogin>
+  <nz-content class="center-login">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </nz-content>
+</ng-template>
