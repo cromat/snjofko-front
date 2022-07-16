@@ -5,6 +5,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+::ng-deep .ml-3 {
+  margin-left: 1.5rem !important;
+}
+
+::ng-deep .mr-3 {
+  margin-right: 1.5rem !important;
+}
+
 .center-login {
   display: flex;
   margin: auto;
@@ -12,7 +20,7 @@
 }
 
 .app-layout {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .menu-sidebar {
@@ -76,11 +84,19 @@ nz-header {
 }
 
 nz-content {
-  margin: 24px;
+  margin: 24px 16px 0;
+  overflow: initial;
 }
 
 .inner-content {
   padding: 24px;
   background: #fff;
   height: 100%;
+}
+
+nz-sider {
+  overflow: auto;
+  height: 100%;
+  position: fixed;
+  left: 0;
 }
