@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TokenStorageService } from "./core/services/token-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -8,8 +7,4 @@ import { TokenStorageService } from "./core/services/token-storage.service";
 })
 export class AppComponent {
   isCollapsed = false;
-
-  constructor(public tss: TokenStorageService) {
-  }
-
 }

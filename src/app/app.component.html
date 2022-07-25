@@ -1,4 +1,4 @@
-<nz-layout class="app-layout" *ngIf="tss.getToken(); else forLogin">
+<nz-layout class="app-layout">
   <nz-sider class="menu-sidebar"
             nzCollapsible
             nzWidth="256px"
@@ -6,38 +6,39 @@
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="/">
+      <a href="https://ng.ant.design/" target="_blank">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Šnjofko</h1>
+        <h1>Ant Design Of Angular</h1>
       </a>
     </div>
-
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-
-      <li nzMatchRouterExact nz-menu-item nzSelected nzMatchRouter nzTitle="Home" nzTooltipPlacement="right">
-        <i nz-icon nzType="home"></i>
-        <span><a routerLink="/">Home</a></span>
-      </li>
-
-      <li nz-submenu nzOpen nzTitle="Oglasi" nzIcon="dashboard">
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
-          <li nz-menu-item nzMatchRouter nzMatchRouterExact>
-            <a routerLink="/items/highlighted">Istaknuto</a>
-          </li>
-          <li nz-menu-item nzMatchRouter nzMatchRouterExact>
-            <a routerLink="/items/cars">Auti</a>
-          </li>
-          <li nz-menu-item nzMatchRouter nzMatchRouterExact>
-            <a routerLink="/items/books">Knjige</a>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/welcome">Welcome</a>
           </li>
         </ul>
       </li>
-
-      <li nz-menu-item nzMatchRouter nzTitle="Profil" nzTooltipPlacement="right">
-        <i nz-icon nzType="user"></i>
-        <span><a routerLink="/profile">Profil</a></span>
+      <li nz-submenu nzOpen nzTitle="Categories" nzIcon="unordered-list">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/items/cars">Cars</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/items/electronics">Electronics</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/items/books">Books</a>
+          </li>
+        </ul>
       </li>
-
+      <li nz-submenu nzOpen nzTitle="User" nzIcon="user">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/user/details/">Profile</a>
+          </li>
+        </ul>
+      </li>
     </ul>
   </nz-sider>
   <nz-layout>
@@ -49,10 +50,6 @@
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
         </span>
-        <button nz-button nzType="primary"
-                style="float: right; margin: 15px"
-                routerLink="/items/create"
-        >Create new item</button>
       </div>
     </nz-header>
     <nz-content>
@@ -62,11 +59,3 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
-
-<ng-template #forLogin>
-  <nz-content class="center-login">
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-  </nz-content>
-</ng-template>

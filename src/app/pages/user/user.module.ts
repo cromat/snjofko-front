@@ -1,20 +1,20 @@
 import { NgModule } from "@angular/core";
-import { ItemListComponent } from "./components/item-list/item-list.component";
 import { CommonModule } from "@angular/common";
 import { NzListModule } from "ng-zorro-antd/list";
 import { NzGridModule } from "ng-zorro-antd/grid";
-import { ItemsRoutingModule } from "./items-routing.module";
+import { UserRoutingModule } from "./user-routing.module";
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
-    ItemListComponent
+    UserDetailsComponent
   ],
   imports: [
-    ItemsRoutingModule,
+    UserRoutingModule,
     CommonModule,
     NzListModule,
     NzGridModule
   ]
 })
-export class ItemsModule {
+export class UserModule {
 }

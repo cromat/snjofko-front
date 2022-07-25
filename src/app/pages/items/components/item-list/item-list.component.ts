@@ -1,31 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemsProvider } from "../../../../core/providers/items.provider";
-import { ItemModel } from "../../../../common/models/item.model";
-import { ItemsFilterCommand } from "../../model/commands/items-filter.command";
+import { ItemModel } from "../../models/dto/item.model";
+import { ItemProvider } from "../../../../core/providers/item.provider";
+import { ItemsFilterCommand } from "../../models/commands/items-filter.command";
 
 @Component({
-  selector: 'app-items',
+  selector: 'app-item-list',
   templateUrl: './item-list.component.html',
   styleUrls: [ './item-list.component.less' ]
 })
 export class ItemListComponent implements OnInit {
-  items: ItemModel[] = [];
 
-  constructor(private itemsProvider: ItemsProvider) {
+  itemList: ItemModel[] = [];
+
+  constructor(private itemProvider: ItemProvider) {
   }
 
   ngOnInit(): void {
-    this.filterItems(new ItemsFilterCommand());
-  }
-
-  onItemsFilter($event: ItemsFilterCommand) {
-      this.filterItems($event);
-  }
-
-  filterItems(cmd: ItemsFilterCommand) {
-    this.itemsProvider.filter(cmd).subscribe((res: ItemModel[]) => {
-      this.items = res ?? [];
-    })
+    this.itemProvider.filterItems(new ItemsFilterCommand())
+      .subscribe((res: ItemModel[]) => {
+        this.itemList = res;
+      })
   }
 
 }
